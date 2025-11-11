@@ -41,6 +41,11 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
   if (!project) return notFound();
 
   const showcaseImages = project.images ?? [];
+  const summary = [
+    { label: "Engagement", value: project.role },
+    { label: "Sector", value: project.tag },
+    { label: "Year", value: project.year },
+  ];
 
   return (
     <div className="space-y-14">
@@ -60,12 +65,35 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
         }
       >
         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-[color:color-mix(in_srgb,var(--muted)_72%,var(--foreground)_28%)]">
-          <span className="tag-chip text-[10px] uppercase tracking-[0.3em]">{project.tag}</span>
+          <span className="tag-chip">{project.tag}</span>
           <span>{project.year}</span>
           <span className="size-1 rounded-full bg-[color:color-mix(in_srgb,var(--accent)_65%,var(--accent-secondary)_35%)]" />
           <span>{project.role}</span>
         </div>
       </Section>
+
+      <div className="container-px">
+        <div className="surface-panel grid gap-4 rounded-[28px] border border-border/60 p-6 md:grid-cols-4">
+          {summary.map((item) => (
+            <div key={item.label} className="space-y-1">
+              <p className="text-xs uppercase tracking-[0.3em] text-[color:color-mix(in_srgb,var(--muted)_70%,var(--foreground)_30%)]">
+                {item.label}
+              </p>
+              <p className="text-sm font-semibold tracking-tight text-[color:color-mix(in_srgb,var(--foreground)_80%,var(--accent)_20%)]">
+                {item.value}
+              </p>
+            </div>
+          ))}
+          <div className="space-y-1">
+            <p className="text-xs uppercase tracking-[0.3em] text-[color:color-mix(in_srgb,var(--muted)_70%,var(--foreground)_30%)]">
+              Stack
+            </p>
+            <p className="text-sm text-[color:color-mix(in_srgb,var(--muted)_72%,var(--foreground)_28%)]">
+              {project.stack.join(" · ")}
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div className="container-px space-y-16">
         {showcaseImages.length > 0 ? (

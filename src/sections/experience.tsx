@@ -1,5 +1,11 @@
 import { Section } from "@/components/section";
 
+const experienceHighlights = [
+  { value: "15+", label: "cross-disciplinary squads coached" },
+  { value: "12", label: "design systems delivered end-to-end" },
+  { value: "0 → 1", label: "product launches guided from brief to go-live" },
+];
+
 const experiences = [
   {
     role: "Lead Frontend Engineer",
@@ -49,48 +55,56 @@ export function Experience() {
       title="Delivering modern product experiences with cross-functional teams."
       description="I've supported startups, agencies, and global teams—leading frontend initiatives, pairing with designers, and ensuring releases feel premium from day one. Here’s a snapshot of recent engagements."
     >
-      <ol className="relative space-y-8 border-l border-border/60 pl-6">
-        {experiences.map((item, index) => (
-          <li key={item.role} className="relative pl-6">
-            <span className="absolute left-[-12px] top-2 inline-flex size-3 rounded-full border border-accent/70 bg-[color:color-mix(in_srgb,var(--accent)_50%,var(--accent-secondary)_50%)] shadow-[0_0_12px_rgba(124,58,237,0.45)]" />
-            <article className="frosted-card border border-transparent p-6 transition-all duration-500 hover:border-accent/50">
-              <header className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <h3 className="text-lg font-semibold tracking-tight">{item.role}</h3>
-                  <p className="text-sm text-[color:color-mix(in_srgb,var(--muted)_72%,var(--foreground)_28%)]">{item.company}</p>
-                </div>
-                <span className="pill text-[10px] uppercase tracking-[0.3em]">
-                  {item.timeframe}
-                </span>
-              </header>
-              <p className="mt-3 text-sm leading-relaxed text-[color:color-mix(in_srgb,var(--muted)_78%,var(--foreground)_22%)]">
-                {item.summary}
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
-                {item.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-2">
-                    <span className="mt-[6px] inline-flex size-1.5 rounded-full bg-[color:color-mix(in_srgb,var(--accent)_60%,var(--accent-secondary)_40%)]" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.28em] text-[color:color-mix(in_srgb,var(--muted)_70%,var(--foreground)_30%)]">
-                {item.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="inline-flex items-center gap-2 rounded-full border border-border/60 px-3 py-1 text-[10px] tracking-[0.22em]"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <span className="absolute right-6 top-6 text-xs font-semibold uppercase tracking-[0.24em] text-[color:color-mix(in_srgb,var(--muted)_65%,var(--foreground)_35%)]">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            </article>
-          </li>
+      <div className="info-grid">
+        {experienceHighlights.map((metric) => (
+          <div key={metric.label} className="stat-card">
+            <p className="text-xl font-semibold tracking-tight accent-gradient bg-clip-text text-transparent">
+              {metric.value}
+            </p>
+            <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
+              {metric.label}
+            </p>
+          </div>
         ))}
-      </ol>
+      </div>
+
+      <div className="timeline mt-10">
+        {experiences.map((item, index) => (
+          <article key={item.role} className="timeline-item surface-panel border border-transparent rounded-[24px] p-6 transition-all duration-500 hover:border-accent/40">
+            <header className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight">{item.role}</h3>
+                <p className="text-sm text-[color:color-mix(in_srgb,var(--muted)_72%,var(--foreground)_28%)]">{item.company}</p>
+              </div>
+              <span className="badge-soft">{item.timeframe}</span>
+            </header>
+            <p className="mt-3 text-sm leading-relaxed text-[color:color-mix(in_srgb,var(--muted)_78%,var(--foreground)_22%)]">
+              {item.summary}
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
+              {item.highlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-2">
+                  <span className="mt-[6px] inline-flex size-1.5 rounded-full bg-[color:color-mix(in_srgb,var(--accent)_60%,var(--accent-secondary)_40%)]" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.28em] text-[color:color-mix(in_srgb,var(--muted)_70%,var(--foreground)_30%)]">
+              {item.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="inline-flex items-center gap-2 rounded-full border border-border/60 px-3 py-1 text-[10px] tracking-[0.22em]"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <span className="absolute right-6 top-6 text-xs font-semibold uppercase tracking-[0.24em] text-[color:color-mix(in_srgb,var(--muted)_65%,var(--foreground)_35%)] opacity-60">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </article>
+        ))}
+      </div>
     </Section>
   );
 }

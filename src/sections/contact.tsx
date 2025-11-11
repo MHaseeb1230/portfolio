@@ -69,6 +69,13 @@ export function Contact() {
     },
   ];
 
+  const engagementSteps = [
+    "Intro call to align on goals, success metrics, and constraints.",
+    "Discovery sprint: audit, architecture outline, and collaboration model.",
+    "Design & build loop with weekly demos and async updates.",
+    "Launch support and handover playbooks to level up your team.",
+  ];
+
   return (
     <Section
       id="contact"
@@ -76,50 +83,56 @@ export function Contact() {
       title="Let’s build a polished product experience together."
       description="Share the context, ambitions, and timelines. I typically respond within one business day and can provide an audit, proposal, or capabilities deck tailored to your team."
     >
-      <div className="section-grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)]">
+      <div className="section-grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]">
         <aside className="space-y-6">
-          <div className="glass-card p-8">
-            <p className="text-sm leading-relaxed text-[color:color-mix(in_srgb,var(--muted)_78%,var(--foreground)_22%)]">
-              Whether you need a partner on a greenfield build, support scaling a design system, or a focused
-              audit of the existing experience, I approach each engagement with clarity, craft, and pragmatic execution.
-            </p>
-            <ul className="mt-6 space-y-4 text-sm">
+          <div className="glass-card p-8 space-y-6">
+            <div className="flex items-center justify-between">
+              <p className="text-sm leading-relaxed text-[color:color-mix(in_srgb,var(--muted)_78%,var(--foreground)_22%)]">
+                Whether you need a partner on a greenfield build, support scaling a design system, or a focused audit of the existing experience,
+                I approach each engagement with clarity, craft, and pragmatic execution.
+              </p>
+              <span className="badge-soft hidden lg:inline-flex">Trusted partner</span>
+            </div>
+            <div className="info-grid">
               {contactDetails.map((detail) => (
-                <li key={detail.label} className="flex items-start gap-3">
-                  <span className="mt-[2px] inline-flex size-9 items-center justify-center rounded-full bg-[rgba(124,58,237,0.12)] text-[color:color-mix(in_srgb,var(--accent)_70%,var(--accent-secondary)_30%)]">
-                    {detail.icon}
-                  </span>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
-                      {detail.label}
-                    </p>
-                    {detail.href ? (
-                      <a
-                        href={detail.href}
-                        target={detail.href.startsWith("http") ? "_blank" : undefined}
-                        rel={detail.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="mt-1 block text-sm font-medium tracking-tight text-[color:color-mix(in_srgb,var(--foreground)_80%,var(--accent)_20%)] transition-colors hover:text-accent"
-                      >
-                        {detail.value}
-                      </a>
-                    ) : (
-                      <p className="mt-1 text-sm text-[color:color-mix(in_srgb,var(--muted)_78%,var(--foreground)_22%)]">
-                        {detail.value}
+                <div key={detail.label} className="surface-panel border border-border/60 rounded-2xl p-4">
+                  <div className="flex items-center gap-3">
+                    <span className="icon-pill size-9">{detail.icon}</span>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.25em] text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
+                        {detail.label}
                       </p>
-                    )}
+                      {detail.href ? (
+                        <a
+                          href={detail.href}
+                          target={detail.href.startsWith("http") ? "_blank" : undefined}
+                          rel={detail.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="mt-1 block text-sm font-medium tracking-tight text-[color:color-mix(in_srgb,var(--foreground)_80%,var(--accent)_20%)] transition-colors hover:text-accent"
+                        >
+                          {detail.value}
+                        </a>
+                      ) : (
+                        <p className="mt-1 text-sm text-[color:color-mix(in_srgb,var(--muted)_78%,var(--foreground)_22%)]">
+                          {detail.value}
+                        </p>
+                      )}
+                    </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="frosted-card p-6 space-y-4">
+            <p className="text-xs uppercase tracking-[0.25em] text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
+              Typical engagement flow
+            </p>
+            <ul className="space-y-3 text-sm text-[color:color-mix(in_srgb,var(--muted)_80%,var(--foreground)_20%)]">
+              {engagementSteps.map((step) => (
+                <li key={step} className="flex items-start gap-2">
+                  <span className="mt-1 inline-flex size-1.5 rounded-full bg-[color:color-mix(in_srgb,var(--accent)_60%,var(--accent-secondary)_40%)]" />
+                  <span>{step}</span>
                 </li>
               ))}
-            </ul>
-          </div>
-          <div className="frosted-card p-6">
-            <p className="text-xs uppercase tracking-[0.25em] text-[color:color-mix(in_srgb,var(--muted)_75%,var(--foreground)_25%)]">
-              Typical engagements
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-[color:color-mix(in_srgb,var(--muted)_80%,var(--foreground)_20%)]">
-              <li>• Design system & UI engineering leadership</li>
-              <li>• End-to-end marketing ↔ product experience builds</li>
-              <li>• Frontend architecture audits & roadmap definition</li>
             </ul>
           </div>
         </aside>

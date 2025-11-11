@@ -8,8 +8,23 @@ import Link from "next/link";
 import { projects as data } from "@/data/projects";
 import { Section } from "@/components/section";
 
-const projects = data.slice(0, 6); // show top 6 on home
-const slides = [...projects, ...projects]; // Duplicate for smooth loop
+const projects = data.slice(0, 6);
+const slides = [...projects, ...projects];
+
+const focusAreas = [
+  {
+    title: "SaaS & product platforms",
+    summary: "Multi-tenant dashboards, admin workflows, and design system rollouts for scaling teams.",
+  },
+  {
+    title: "Marketing & growth",
+    summary: "Conversion-oriented marketing sites with localisation, analytics, and fast experimentation loops.",
+  },
+  {
+    title: "AI & emerging tech",
+    summary: "Voice/chat experiences, data visualisation, and integrations that bring AI features to market.",
+  },
+];
 
 export function Projects() {
   return (
@@ -28,6 +43,19 @@ export function Projects() {
         </Link>
       }
     >
+      <div className="info-grid mb-10">
+        {focusAreas.map((item) => (
+          <div key={item.title} className="surface-panel border border-border/60 rounded-[24px] p-6">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.32em] text-[color:color-mix(in_srgb,var(--muted)_70%,var(--foreground)_30%)]">
+              {item.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-[color:color-mix(in_srgb,var(--muted)_76%,var(--foreground)_24%)]">
+              {item.summary}
+            </p>
+          </div>
+        ))}
+      </div>
+
       <EmblaCarousel
         className="pt-3"
         options={{ align: "start", loop: true, dragFree: true }}

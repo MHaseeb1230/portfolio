@@ -235,6 +235,81 @@ textarea::placeholder {
   gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.subtle-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--border) 70%, transparent), transparent);
+  opacity: 0.6;
+}
+
+.icon-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  color: color-mix(in srgb, var(--foreground) 82%, var(--accent) 18%);
+}
+
+.badge-soft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 80%, var(--accent) 20%);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2rem);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.65rem;
+  top: 0.4rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  background: color-mix(in srgb, var(--background) 90%, var(--accent) 10%);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.timeline-item:last-child::after {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  bottom: -2rem;
+  width: 2px;
+  height: 2rem;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--border) 60%, transparent), transparent);
+}
+
 .surface-panel {
   background: color-mix(in srgb, var(--card) 90%, transparent);
   backdrop-filter: blur(22px);
@@ -346,6 +421,20 @@ html.light .eyebrow {
 
 html.light .subtle {
   color: color-mix(in srgb, var(--muted) 52%, var(--foreground) 48%);
+}
+
+html.light .icon-pill {
+  background: color-mix(in srgb, var(--accent) 10%, #ffffff 90%);
+  border-color: color-mix(in srgb, var(--border) 45%, transparent);
+}
+
+html.light .badge-soft {
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff 88%);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+html.light .timeline {
+  border-color: color-mix(in srgb, var(--border) 52%, transparent);
 }
 
 html.light .site-footer {
