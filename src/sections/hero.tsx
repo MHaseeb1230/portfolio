@@ -20,7 +20,7 @@ export function Hero() {
       className="pt-28"
       containerClassName="relative isolate grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] items-center"
     >
-      <div className="absolute inset-0 -z-10 overflow-hidden rounded-[40px]">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[40px]" aria-hidden>
         <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 blur-3xl opacity-60"
           style={{
             background:
@@ -29,7 +29,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="space-y-6">
+      <div className="order-2 space-y-6 md:order-none">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export function Hero() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6, delay: 0.08 }}
-        className="relative mx-auto w-full max-w-[420px] md:max-w-[480px]"
+        className="order-1 relative mx-auto w-full max-w-[420px] md:order-none md:max-w-[480px]"
       >
         <div className="glass-card relative overflow-hidden rounded-[36px] px-6 pb-8 pt-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.18),transparent_55%)]" />
