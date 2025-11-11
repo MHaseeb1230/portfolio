@@ -98,7 +98,7 @@ textarea::placeholder {
 }
 
 .container-px {
-  width: min(1180px, 100% - clamp(2rem, 6vw, 4rem));
+  width: min(1280px, 100% - clamp(2rem, 6vw, 4rem));
   margin-inline: auto;
 }
 

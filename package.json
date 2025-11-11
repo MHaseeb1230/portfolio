@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
+    "@vapi-ai/web": "^2.5.0",
     "class-variance-authority": "^0.7.1",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
