@@ -5,7 +5,8 @@ import { Section } from "@/components/section";
 import Vapi from "@vapi-ai/web";
 
 const ASSISTANT_ID = "d8df5a5a-ac86-4796-84be-f3116445616c";
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY;
+const FALLBACK_PUBLIC_KEY = "69a30ffb-adb0-4488-9332-177367a95c2d";
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY ?? FALLBACK_PUBLIC_KEY;
 
 type CallStatus = "idle" | "initialising" | "connecting" | "in-call" | "ending";
 
@@ -16,11 +17,6 @@ export function Assistant() {
   const [volumeLevel, setVolumeLevel] = React.useState(0);
 
   React.useEffect(() => {
-    if (!PUBLIC_KEY) {
-      setLoadError("Missing Vapi public key. Set NEXT_PUBLIC_VAPI_PUBLIC_KEY in your environment.");
-      return;
-    }
-
     setStatus("initialising");
     const vapi = new Vapi(PUBLIC_KEY);
     vapiRef.current = vapi;
